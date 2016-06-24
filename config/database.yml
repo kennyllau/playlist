@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: playlist_production
-  username: playlist
+  username: ubuntu
   password: <%= ENV['PLAYLIST_DATABASE_PASSWORD'] %>
