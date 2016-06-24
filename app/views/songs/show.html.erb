@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="columns three u-pull-right">
+		<a href="/songs">Songs Dashboard</a> |
+		<a href="/sessions" data-method="delete">Logout</a>
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="columns six">
+		<h2><%= @song.artist %> - <%= @song.title %> </h2>
+		<h4>Others that added this song</h4>
+		<table class="u-full-width">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Times Added</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% @people.each do  |user| %>
+				<tr>
+					<td><a href="/users/<%= user.id %>"><%= user.first_name %></a></td>
+					<td><%= user.songlists.where(user_id: user.id).where(song_id: params[:id]).count %></td>
+				</tr>
+			<% end %>
+			</tbody>
+			
+		</table>
+	</div>
+</div>
